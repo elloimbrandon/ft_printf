@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 14:48:31 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 21:14:26 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/07 22:16:59 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef	struct		s_operations
 */
 
 char				ft_isflag(char x);
+char				*ft_tobinary(unsigned long long nbr);
 char				*ft_itoall(long long n);
 char				*ft_itoabase(unsigned long long nbr, int base,
 					t_ops *ops, char *str);

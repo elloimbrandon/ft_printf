@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 13:58:34 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 18:45:40 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/07 22:23:47 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ int		handle_char(va_list list, t_ops *ops)
 {
 	char				*temp;
 	char				*str;
-	int					res;
 	int					x;
 
 	x = 0;
-	res = 0;
 	temp = ft_strnew(4864);
 	if (ops->conversion == 's')
 	{
@@ -40,16 +38,17 @@ int		handle_int(va_list list, t_ops *ops)
 {
 	char				*temp;
 	char				*str;
-	int					res;
 	long long			x;
 
-	res = 0;
 	str = 0;
 	temp = ft_strnew(4864);
 	x = ft_cast(list, ops);
-	if (ops->conversion == 'd' || ops->conversion == 'i')
+	if (ops->conversion == 'd' || ops->conversion == 'i' ||
+			ops->conversion == 'b')
 	{
-		if ((x < 0 || x >= 0) && (x != LONG_LONG_MAX))
+		if (ops->conversion == 'b')
+			str = ft_tobinary(x);
+		if ((x < 0 || x >= 0) && (x != LONG_LONG_MAX) && ops->conversion != 'b')
 			str = ft_itoall(x);
 		if (x > LONG_LONG_MAX)
 			str = ft_unlltoa(x);
@@ -65,10 +64,8 @@ int		handle_int(va_list list, t_ops *ops)
 int		handle_oc_hex_ptr(va_list list, t_ops *ops)
 {
 	char				*temp;
-	int					res;
 	unsigned long long	x;
 
-	res = 0;
 	temp = ft_strnew(4864);
 	if (ops->conversion == 'p')
 		x = va_arg(list, unsigned long long int);
@@ -86,10 +83,8 @@ int		handle_unll(va_list list, t_ops *ops)
 {
 	char				*temp;
 	char				*str;
-	int					res;
 	unsigned long long	x;
 
-	res = 0;
 	temp = ft_strnew(4864);
 	x = ft_cast_unsigned(list, ops);
 	if (x)

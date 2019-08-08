@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 12:06:56 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 21:12:18 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/07 22:23:15 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		ft_apply_conversion(va_list list, t_ops *ops)
 {
 	if (ops->conversion == 's' || ops->conversion == 'c')
 		ops->printed = handle_char(list, ops);
-	if (ops->conversion == 'd' || ops->conversion == 'i')
+	if (ops->conversion == 'd' || ops->conversion == 'i'
+			|| ops->conversion == 'b')
 		ops->printed = handle_int(list, ops);
 	if (ops->conversion == 'p' || ops->conversion == 'o'
 			|| ops->conversion == 'x' || ops->conversion == 'X')
@@ -36,7 +37,7 @@ int		ft_parse(const char *format, int *i, t_ops *ops)
 	ft_check_mods((char*)format, ops, i);
 	if (ops->minus && ops->zero)
 		ops->zero = 0;
-	if (ft_check_conversion(-1, "scpfdiouxX*", format[*i], ops))
+	if (ft_check_conversion(-1, "scpfdiouxXb*", format[*i], ops))
 		return (1);
 	else
 		return (0);

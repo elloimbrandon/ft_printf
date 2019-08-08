@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 17:28:09 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 17:32:47 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/07 22:27:19 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ char	*percision_flags(t_ops *ops, char *str)
 		vals = prec_checker(temp, str, ops);
 		while (ops->percision-- > vals.length && ops->conversion != 's')
 			temp[vals.x++] = (ops->zero ||
-					conversion_check("diouxX", ops->conversion) ? '0' : ' ');
-		if (conversion_check("diouxX", ops->conversion) == 1)
+					conversion_check("diouxXb", ops->conversion) ? '0' : ' ');
+		if (conversion_check("diouxXb", ops->conversion) == 1)
 			ops->percision = ft_strlen(str);
 		while (str[vals.i] && ops->percision >= 0)
 		{

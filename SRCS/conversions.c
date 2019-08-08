@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 17:16:53 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 18:47:08 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/07 22:13:32 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,29 @@ char		*ft_itoall(long long n)
 		str[--len] = sign % 10 + '0';
 	if (n < 0)
 		str[0] = '-';
+	return (str);
+}
+
+char		*ft_tobinary(unsigned long long nbr)
+{
+	char				*str;
+	int					len;
+	int					i;
+
+	len = ft_strlenu(nbr);
+	str = (char*)malloc(sizeof(char) * len);
+	i = 0;
+	while (nbr > 0)
+	{
+		if (nbr % 2 == 0)
+			str[i] = '0';
+		else
+			str[i] = '1';
+		nbr /= 2;
+		i++;
+	}
+	str[i] = '\0';
+	str = ft_strrev(str);
 	return (str);
 }
 
