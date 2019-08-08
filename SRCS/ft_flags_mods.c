@@ -40,19 +40,34 @@ int		flag_mods(t_ops *ops, char *str)
 
 char	*width_flags(char *output, char *str, t_ops *ops, t_vals *wvals)
 {
+    if (str[0] == '-' && ops->zero)
+    {
+       output[0] = '-';
+       wvals->i++;
+       wvals->x++;
+    }
+    else if (ops->add && str[0] != '-' && ops->zero) {
+        output[0] = '+';
+        wvals->i++;
+        wvals->x++;
+    }
+    if (ops->hash && conversion_check("xXpo", ops->conversion) && ops->zero)
+    {
+       ft_strcat(output, ops->conversion == 'X' ? "0X" : "0x");
+       wvals->i += 2;
+      ops->hashplaced = 1;
+    }
 	while (!ops->width && str[wvals->x] && output[wvals->i])
 		output[wvals->i++] = str[wvals->x++];
 	while (!ops->minus && ops->width-- > wvals->length)
 		output[wvals->i++] = (ops->zero ? '0' : ' ');
 	if ((ops->hash || ops->conversion == 'p') && ops->width && !ops->hashplaced)
-	{
+    {
 		if (ops->conversion != 'o')
-		{
 			ft_strcat(output, ops->conversion == 'X' ? "0X" : "0x");
-			wvals->i += 2;
-		}
 		else
-			output[wvals->i++] = '0';
+			output[wvals->i] = '0';
+        wvals->i += (ops->conversion == 'o' ? 1 : 2);
 	}
 	while (str[wvals->x])
 		output[wvals->i++] = str[wvals->x++];
