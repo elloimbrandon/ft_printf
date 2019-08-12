@@ -6,7 +6,7 @@
 #    By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 15:43:05 by brfeltz           #+#    #+#              #
-#    Updated: 2019/08/07 20:26:41 by brfeltz          ###   ########.fr        #
+#    Updated: 2019/08/12 14:00:19 by brfeltz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c ft_flags_mods.c handlers.c conversions.c ft_cast.c apply_modflag.c tools.c ft_parse.c ##main.c # DONT FORGET TO TAKE THE MAIN OUT!!!!!!!!
+SRCS = ft_printf.c ft_flags_mods.c handlers.c conversions.c ft_cast.c ft_checks.c tools.c ft_parse.c
 
 LIBFT_SRCS = ft_bzero.c \
 	ft_atoi.c \
