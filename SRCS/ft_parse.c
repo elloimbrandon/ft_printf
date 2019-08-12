@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 18:32:40 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 21:11:13 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:12:36 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_check_flags2(char *format, t_ops *ops, int x)
 		ops->hash = 1;
 	else if (format[x] == '.')
 	{
-		ops->percision = ft_atoi(&format[x + 1]);
+		ops->precision = ft_atoi(&format[x + 1]);
 		while (ft_isdigit(format[x + 1]))
 			x++;
 	}

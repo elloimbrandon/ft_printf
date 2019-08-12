@@ -6,22 +6,22 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 12:06:56 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 22:23:15 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:14:12 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADERS/ft_printf.h"
 
 /*
-** %[parameter][flags][width][.percision][length] type
+** %[parameter][flags][width][.precision][length] type
 */
 
 int		ft_apply_conversion(va_list list, t_ops *ops)
 {
 	if (ops->conversion == 's' || ops->conversion == 'c')
 		ops->printed = handle_char(list, ops);
-	if (ops->conversion == 'd' || ops->conversion == 'i'
-			|| ops->conversion == 'b')
+	if (ops->conversion == 'd' || ops->conversion == 'i' ||
+			ops->conversion == 'b')
 		ops->printed = handle_int(list, ops);
 	if (ops->conversion == 'p' || ops->conversion == 'o'
 			|| ops->conversion == 'x' || ops->conversion == 'X')
@@ -37,26 +37,10 @@ int		ft_parse(const char *format, int *i, t_ops *ops)
 	ft_check_mods((char*)format, ops, i);
 	if (ops->minus && ops->zero)
 		ops->zero = 0;
-	if (ft_check_conversion(-1, "scpfdiouxXb*", format[*i], ops))
+	if (ft_check_conversion(-1, "scpfdiouxXb", format[*i], ops))
 		return (1);
 	else
 		return (0);
-}
-
-int		ft_printf(const char *format, ...)
-{
-	va_list	list;
-	t_ops	ops;
-	int		res;
-	int		i;
-
-	i = -1;
-	res = 0;
-	ft_bzero(&ops, sizeof(t_ops));
-	va_start(list, format);
-	res = ft_handle_all(format, list, i, ops);
-	va_end(list);
-	return (res);
 }
 
 int		ft_handle_all(const char *format, va_list list, int i, t_ops ops)
@@ -85,5 +69,21 @@ int		ft_handle_all(const char *format, va_list list, int i, t_ops ops)
 			res++;
 		}
 	}
+	return (res);
+}
+
+int		ft_printf(const char *format, ...)
+{
+	va_list	list;
+	t_ops	ops;
+	int		res;
+	int		i;
+
+	i = -1;
+	res = 0;
+	ft_bzero(&ops, sizeof(t_ops));
+	va_start(list, format);
+	res = ft_handle_all(format, list, i, ops);
+	va_end(list);
 	return (res);
 }

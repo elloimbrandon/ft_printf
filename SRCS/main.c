@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 18:38:01 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/07/15 21:45:10 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:23:31 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ int	main(void)
    // printf("%x", 0);
     //ft_printf("mine:%d\n", 0);
     //printf("theird:%d", 1);
-    printf("cpu:%*d\n", 5, 42);
-    ft_printf("mine:%*d\n", 5, 42);
+    //printf("cpu:%*d\n", 5, 42);
+    //ft_printf("mine:%b\n", 42);
     //ft_printf("%x", 0);
-    /*
+//	printf("%lld", 9223372036854775807);
+	ft_printf("%lld", 9223372036854775807);
+	/*
     printf("cpu:%-15x\n", 542);
     ft_printf("mine%-15x\n", 542);
     ft_printf("mine:%#08x\n", 42);
@@ -38,7 +40,7 @@ int	main(void)
     ft_printf("mine:%#8x\n", 42);
     //printf("%-05d", -42);
     */
-    /*
+	/*
     printf("%#08x\n", 42);
     ft_printf("mine:%#08x\n", 42);
     printf("%#08X\n", 42);

@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 14:48:31 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/07 22:16:59 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:31:46 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 ** Macros
 */
 
-# define LONG_LONG_MAX 9223372036854775807
+# define LONG_LONG_MAX 9223372036854775807 - 1
 # define LONG_LONG_MIN -9223372036854775807 - 1
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648 - 1
@@ -56,7 +56,7 @@ typedef	struct		s_operations
 	int				mod;
 	int				printed;
 	int				hashplaced;
-	int				percision;
+	int				precision;
 	char			conversion;
 
 }					t_ops;
@@ -74,7 +74,7 @@ char				*ft_unlltoa(unsigned long long nbr);
 char				*no_perc_width(char *temp, char *str, t_ops *ops);
 char				*width_flags(char *output, char *str,
 					t_ops *ops, t_vals *vals);
-char				*percision_flags(t_ops *ops, char *str);
+char				*precision_flags(t_ops *ops, char *str);
 char				check_prec_flag(t_ops *ops, char *temp, int x);
 int					ft_handle_all(const char *format, va_list list,
 					int i, t_ops ops);
@@ -96,6 +96,8 @@ size_t				ft_strlenu(unsigned long long n);
 t_vals				prec_checker(char *temp, char *str, t_ops *ops);
 void				ft_check_flags(char *format, t_ops *ops, int *i);
 void				ft_check_mods(char *format, t_ops *ops, int *i);
+void				ft_width_check(char *output, char *str,
+					t_ops *ops, t_vals *wvals);
 void				ft_add_hash(t_ops *ops, char *str);
 void				ft_putnbrf(int nbr);
 long long			ft_cast(va_list list, t_ops *ops);
