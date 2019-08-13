@@ -6,7 +6,7 @@
 #    By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 15:43:05 by brfeltz           #+#    #+#              #
-#    Updated: 2019/08/12 14:00:19 by brfeltz          ###   ########.fr        #
+#    Updated: 2019/08/12 18:55:09 by brfeltz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,4 +107,4 @@ fclean:	clean
 re:	fclean all
 
 debug:
-	$(CC) $(CFLAGS) $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS)) -g
+	$(CC) $(CFLAGS) $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS)) -g -fsanitize=address

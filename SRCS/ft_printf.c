@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 12:06:56 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/08 00:14:12 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/12 18:57:21 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_apply_conversion(va_list list, t_ops *ops)
 	if (ops->conversion == 's' || ops->conversion == 'c')
 		ops->printed = handle_char(list, ops);
 	if (ops->conversion == 'd' || ops->conversion == 'i' ||
-			ops->conversion == 'b')
+			ops->conversion == 'b' || ops->conversion == 'f')
 		ops->printed = handle_int(list, ops);
 	if (ops->conversion == 'p' || ops->conversion == 'o'
 			|| ops->conversion == 'x' || ops->conversion == 'X')

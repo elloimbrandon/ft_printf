@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 23:35:32 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/12 13:31:52 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/12 18:56:23 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		handle_char(va_list list, t_ops *ops)
 	{
 		str = va_arg(list, char*);
 		if (!str)
-			ft_bzero(str, ft_strlen(str));
+			ft_putstr("(null)");
 		else
 			ft_strcpy(temp, str);
 	}
