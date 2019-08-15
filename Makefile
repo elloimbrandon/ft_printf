@@ -18,7 +18,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c ft_flags_mods.c handlers.c conversions.c ft_cast.c ft_checks.c tools.c ft_parse.c
+SRCS = ft_printf.c ft_flags_mods.c handlers.c conversions.c ft_cast.c ft_checks.c tools.c ft_parse.c main.c
 
 LIBFT_SRCS = ft_bzero.c \
 	ft_atoi.c \
@@ -107,4 +107,4 @@ fclean:	clean
 re:	fclean all
 
 debug:
-	$(CC) $(CFLAGS) $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS)) -g -fsanitize=address
+	$(CC) $(CFLAGS) $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS)) -g ##-fsanitize=address

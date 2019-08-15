@@ -14,9 +14,7 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <wchar.h>
 # include <inttypes.h>
 # include <locale.h>
 # include <math.h>

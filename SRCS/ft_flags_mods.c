@@ -51,8 +51,8 @@ char	*precision_flags(t_ops *ops, char *str)
 		vals = prec_checker(temp, str, ops);
 		while (ops->precision-- > vals.length && ops->conversion != 's')
 			temp[vals.x++] = (ops->zero ||
-					conversion_check("diouxXb", ops->conversion) ? '0' : ' ');
-		if (conversion_check("diouxXb", ops->conversion) == 1)
+					conversion_check("diouxXfb", ops->conversion) ? '0' : ' ');
+		if (conversion_check("diouxXfb", ops->conversion) == 1)
 			ops->precision = ft_strlen(str);
 		while (str[vals.i] && ops->precision >= 0)
 		{

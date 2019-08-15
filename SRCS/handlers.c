@@ -44,7 +44,7 @@ int		handle_int(va_list list, t_ops *ops)
 	temp = ft_strnew(4864);
 	x = ft_cast(list, ops);
 	if (ops->conversion == 'd' || ops->conversion == 'i' ||
-			ops->conversion == 'b')
+			ops->conversion == 'b' || ops->conversion == 'f')
 	{
 		if (ops->conversion == 'b')
 			str = ft_tobinary(x);
