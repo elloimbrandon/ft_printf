@@ -24,7 +24,7 @@ int		handle_char(va_list list, t_ops *ops)
 	{
 		str = va_arg(list, char*);
 		if (!str)
-			ft_putstr("(null)");
+			ft_putstrf("(null)", ops);
 		else
 			ft_strcpy(temp, str);
 	}
