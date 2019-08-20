@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 14:48:31 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/19 22:21:36 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/19 22:36:00 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char				*check_space(char *str, t_ops *ops);
 int					ft_handle_all(const char *format, va_list list,
 					int i, t_ops ops);
 int					conversion_check(char *str, char c);
-int					flag_mods(t_ops *ops, char *str);
+int					flag_mods(t_ops *ops, char *str, char *output);
 int					ft_ismod(int c);
 int					handle_int(va_list list, t_ops *ops);
 int					handle_unll(va_list list, t_ops *ops);

@@ -6,15 +6,14 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 17:28:09 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/19 22:08:55 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/19 22:34:56 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HEADERS/ft_printf.h"
 
-int		flag_mods(t_ops *ops, char *str)
+int		flag_mods(t_ops *ops, char *str, char *output)
 {
-	char	*output;
 	t_vals	vals;
 	t_vals	wvals;
 
