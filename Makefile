@@ -18,7 +18,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c ft_flags_mods.c handlers.c conversions.c ft_cast.c ft_checks.c tools.c ft_parse.c main.c
+SRCS = ft_printf.c ft_flags_mods.c handlers.c conversions.c ft_cast.c ft_checks.c tools.c ft_parse.c
 
 LIBFT_SRCS = ft_bzero.c \
 	ft_atoi.c \

@@ -21,21 +21,44 @@ int		flag_mods(t_ops *ops, char *str)
 	ft_bzero(&vals, sizeof(t_vals));
 	ft_bzero(&wvals, sizeof(t_vals));
 	output = ft_strnew(4864);
-	if (ops->conversion != 'c')
+    if (ops->period && ops->precision == 0 && str[0] == '0' && ops->conversion != 'o')
+       str[0] = 0;
+	if (ops->conversion != 'c' && ops->conversion != '%')
 	{
 		str = precision_flags(ops, str);
 		wvals.length = ft_strlen(str);
 		if (!ops->hashplaced && (ops->hash || ops->conversion == 'p'))
 			ops->width -= (ops->conversion == 'o' ? 1 : 2);
+        if(ops->space && str[0] != '-' && str[0] != '+' && ops->conversion != 'u')
+            str = check_space(str, ops);
 		output = width_flags(output, str, ops, &wvals);
 	}
-	if (ops->conversion == 'c' && ops->zero != 1)
+	if (ops->zero != 1 && (ops->conversion == 'c' || ops->conversion == '%'))
 	{
 		wvals.length = ft_strlen(str);
 		output = width_flags(output, str, ops, &wvals);
 	}
 	ops->printed = ft_putstrf(output, ops);
 	return (ops->printed);
+}
+char    *check_space(char *str, t_ops *ops)
+{
+    char *newstr;
+
+    newstr = ft_strnew(ft_strlen(str));
+    if(ops->space == 1 && !ops->minus && !ops->width)
+    {
+        newstr[0] = ' ';
+        ft_strncat(newstr, str, ft_strlen(str));
+    }
+    else if(ops->space == 1 && ops->minus && !ops->add)
+    {
+        newstr[0] = '-';
+        ft_strncat(newstr, str, ft_strlen(str));
+    }
+    else
+        return (str);
+    return(newstr);
 }
 
 char	*precision_flags(t_ops *ops, char *str)
@@ -57,7 +80,7 @@ char	*precision_flags(t_ops *ops, char *str)
 		while (str[vals.i] && ops->precision >= 0)
 		{
 			temp[vals.x++] = str[vals.i++];
-			if (conversion_check("cs", ops->conversion) == 1)
+			if (conversion_check("cs%", ops->conversion) == 1)
 				ops->precision--;
 		}
 	}
@@ -73,7 +96,7 @@ char	*width_flags(char *output, char *str, t_ops *ops, t_vals *wvals)
 		output[wvals->i++] = (ops->zero ? '0' : ' ');
 	if ((ops->hash || ops->conversion == 'p') && ops->width && !ops->hashplaced)
 	{
-		if (ops->conversion != 'o')
+		if (ops->conversion != 'o' && ops->hash)
 		{
 			ft_strcat(output, ops->conversion == 'X' ? "0X" : "0x");
 			wvals->i += 2;

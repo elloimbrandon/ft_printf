@@ -18,7 +18,8 @@
 
 int		ft_apply_conversion(va_list list, t_ops *ops)
 {
-	if (ops->conversion == 's' || ops->conversion == 'c')
+	if (ops->conversion == 's' || ops->conversion == 'c' ||
+            ops->conversion == '%')
 		ops->printed = handle_char(list, ops);
 	if (ops->conversion == 'd' || ops->conversion == 'i' ||
 			ops->conversion == 'b' || ops->conversion == 'f')
@@ -35,6 +36,8 @@ int		ft_parse(const char *format, int *i, t_ops *ops)
 {
 	ft_check_flags((char*)format, ops, i);
 	ft_check_mods((char*)format, ops, i);
+    if (ops->precision > 0 && ops->zero)
+        ops->zero = 0;
 	if (ops->minus && ops->zero)
 		ops->zero = 0;
 	if (ft_check_conversion(-1, "scpfdiouxXb", format[*i], ops))

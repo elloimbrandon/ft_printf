@@ -26,8 +26,8 @@
 
 # define LONG_LONG_MAX 9223372036854775807 - 1
 # define LONG_LONG_MIN -9223372036854775807 - 1
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648 - 1
+# define MAX_INT 2147483647 - 1
+# define MIN_INT -2147483647 - 1
 
 # define FLAGS(x) (x == '-' || x == '+' || x == '0' || x == ' ')
 
@@ -54,7 +54,8 @@ typedef	struct		s_operations
 	int				mod;
 	int				printed;
 	int				hashplaced;
-	int				precision;
+    int             period;
+    int				precision;
 	char			conversion;
 
 }					t_ops;
@@ -74,6 +75,7 @@ char				*width_flags(char *output, char *str,
 					t_ops *ops, t_vals *vals);
 char				*precision_flags(t_ops *ops, char *str);
 char				check_prec_flag(t_ops *ops, char *temp, int x);
+char                *check_space(char *str, t_ops *ops);
 int					ft_handle_all(const char *format, va_list list,
 					int i, t_ops ops);
 int					conversion_check(char *str, char c);

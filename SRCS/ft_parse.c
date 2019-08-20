@@ -52,6 +52,7 @@ int		ft_check_flags2(char *format, t_ops *ops, int x)
 		ops->hash = 1;
 	else if (format[x] == '.')
 	{
+        ops->period = 1;
 		ops->precision = ft_atoi(&format[x + 1]);
 		while (ft_isdigit(format[x + 1]))
 			x++;
@@ -70,8 +71,12 @@ void	ft_check_flags(char *format, t_ops *ops, int *i)
 	int		x;
 
 	x = *i;
-	while (!ft_isalpha(format[x]))
+	while (!ft_isalpha(format[x]) && format[x])
 	{
+        if (format[x] == '%') {
+            ops->conversion = '%';
+            break ;
+        }
 		x = ft_check_flags2(format, ops, x);
 		x++;
 	}

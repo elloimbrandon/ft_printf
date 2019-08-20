@@ -84,7 +84,7 @@ char		*ft_itoabase(unsigned long long nbr, int base,
 	int					i;
 
 	i = 0;
-	if (!str[0])
+	if (!str)
 		str[0] = '0';
 	if (ops->conversion == 'o' || ops->conversion == 'x'
 			|| ops->conversion == 'p')
@@ -111,9 +111,9 @@ char		*ft_itoabase(unsigned long long nbr, int base,
 void		ft_add_hash(t_ops *ops, char *str)
 {
 	ops->hashplaced = 1;
-	if (ops->conversion == 'x' || ops->conversion == 'X'
-			|| ops->conversion == 'p')
+	if ((ops->conversion == 'x' || ops->conversion == 'X'
+			|| ops->conversion == 'p') && ops->hash)
 		ft_strcat(str, ops->conversion == 'X' ? "X0" : "x0");
-	else
+	else if (ops->hash)
 		ft_strcat(str, "0");
 }

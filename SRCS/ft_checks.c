@@ -45,7 +45,7 @@ t_vals	prec_checker(char *temp, char *str, t_ops *ops)
 		ops->precision++;
 		i++;
 	}
-	else if (ops->add)
+	else if (ops->add && ops->conversion != 'u')
 	{
 		temp[x] = '+';
 		i++;
