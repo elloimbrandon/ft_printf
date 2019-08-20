@@ -6,7 +6,7 @@
 /*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 14:48:31 by brfeltz           #+#    #+#             */
-/*   Updated: 2019/08/12 13:31:46 by brfeltz          ###   ########.fr       */
+/*   Updated: 2019/08/19 22:21:36 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ typedef	struct		s_operations
 	int				mod;
 	int				printed;
 	int				hashplaced;
-    int             period;
-    int				precision;
+	int				period;
+	int				precision;
 	char			conversion;
 
 }					t_ops;
@@ -75,7 +75,7 @@ char				*width_flags(char *output, char *str,
 					t_ops *ops, t_vals *vals);
 char				*precision_flags(t_ops *ops, char *str);
 char				check_prec_flag(t_ops *ops, char *temp, int x);
-char                *check_space(char *str, t_ops *ops);
+char				*check_space(char *str, t_ops *ops);
 int					ft_handle_all(const char *format, va_list list,
 					int i, t_ops ops);
 int					conversion_check(char *str, char c);
@@ -94,6 +94,9 @@ int					ft_check_conversion(int i, char *format,
 int					ft_putstrf(char *s, t_ops *ops);
 size_t				ft_strlenu(unsigned long long n);
 t_vals				prec_checker(char *temp, char *str, t_ops *ops);
+void				ft_hash_period(char *temp, t_ops *ops);
+void				ft_check_null(char *temp, int x, t_ops *ops);
+void				ft_check_period(char *str, t_ops *ops);
 void				ft_check_flags(char *format, t_ops *ops, int *i);
 void				ft_check_mods(char *format, t_ops *ops, int *i);
 void				ft_width_check(char *output, char *str,
