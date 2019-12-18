@@ -6,7 +6,7 @@
 #    By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 15:43:05 by brfeltz           #+#    #+#              #
-#    Updated: 2019/08/12 18:55:09 by brfeltz          ###   ########.fr        #
+#    Updated: 2019/12/18 15:16:59 by brfeltz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,7 @@ $(NAME):
 	@$(CC) $(CFLAGS) -c $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS)) -I $(HEADERS)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
+	@rm -rf *.o
 
 clean:
 	@rm -rf $(OBJECTS)
@@ -107,4 +108,4 @@ fclean:	clean
 re:	fclean all
 
 debug:
-	$(CC) $(CFLAGS) $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS)) -g ##-fsanitize=address
+	$(CC) $(CFLAGS) $(addprefix SRCS/,$(SRCS)) $(addprefix libft/,$(LIBFT_SRCS))
